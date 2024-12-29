@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Core.Entities.Movie>
+
+@{
+    ViewData["Title"] = "Movies Ordered by Name";
+}
+
+<h2>Movies Ordered by Name</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning btn-sm">Edit</a>
+                <a asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Core.Entities.Movie>
+
+@{
+    ViewData["Title"] = "Films favoris";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!Model.Any())
+{
+    <p>Aucun film dans les favoris.</p>
+}
+else
+{
+    <ul>
+        @foreach (var movie in Model)
+        {
+            <li>@movie.Name</li>
+        }
+    </ul>
+}

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Core.Entities.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+        <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
+        <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.Email</td>
+            <td>@customer.PhoneNumber</td>
+            <td>@customer.Address</td>
+            <td>@customer.DateOfBirth.ToShortDateString()</td>
+            <td>@customer.CreatedAt.ToShortDateString()</td>
+            <td>@customer.UpdatedAt.ToShortDateString()</td>
+            <td>
+                <a href="@Url.Action("Edit", "Customer", new { id = customer.Id })">Edit</a> |
+                <a href="@Url.Action("Delete", "Customer", new { id = customer.Id })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Customer")">Create New Customer</a>

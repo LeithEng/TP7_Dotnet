@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Core.Entities.Movie>
+
+@{
+ViewBag.Title = "Movies";
+}
+
+<h2>Movies</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Movie</a>
+</p>
+<p>
+    <a asp-controller="Customer" asp-action="FavoriteMovies" class="btn btn-info btn-sm">My Favorite Movies</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in Model)
+    {
+    <tr>
+        <td>@movie.Name</td>
+        <td>@movie.Genre?.Name</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning btn-sm">Edit</a>
+            <a asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger btn-sm">Delete</a>
+
+            <!-- Add Review Button -->
+            <a asp-controller="Customer" asp-action="AddReview" asp-route-movieId="@movie.Id" class="btn btn-info btn-sm">Add Review</a>
+
+            <!-- Add to Favorites Button -->
+            <form method="post" asp-action="AddToFavorites" asp-route-movieId="@movie.Id" style="display:inline;">
+                <button type="submit" class="btn btn-secondary btn-sm">Add to Favorites</button>
+            </form>
+
+            <!-- Remove from Favorites Button -->
+            <form method="post" asp-action="RemoveFromFavorites" asp-route-movieId="@movie.Id" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Remove from Favorites</button>
+            </form>
+
+            <!-- Movies Ordered By Genre Button -->
+            <a asp-action="MoviesOrderedByGenre" class="btn btn-secondary btn-sm">Movies by Genre</a>
+
+            <!-- Movie Average Rating Button -->
+            <a asp-action="MovieAverageRating" asp-route-movieId="@movie.Id" class="btn btn-success btn-sm">Average Rating</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

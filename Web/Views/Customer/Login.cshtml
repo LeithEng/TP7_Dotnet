@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="post" asp-action="Login">
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" name="email" id="Email" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

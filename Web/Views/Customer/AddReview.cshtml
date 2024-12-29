@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Ajouter un avis sur un film";
+    var movieId = (Guid)ViewBag.MovieId;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="AddReview" method="post">
+    <input type="hidden" name="movieId" value="@movieId" />
+    <div class="form-group">
+        <label for="Content">Review</label>
+        <textarea class="form-control" id="Content" name="content" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Rating">Rating</label>
+        <input type="number" class="form-control" id="Rating" name="rating" min="1" max="5" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

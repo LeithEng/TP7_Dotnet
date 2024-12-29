@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Core.Entities.Movie>
+
+@{
+    ViewBag.Title = "Movies Ordered by Genre";
+}
+
+<h2>Movies Ordered by Genre</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No movies found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+                <td>@movie.Genre?.Name </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

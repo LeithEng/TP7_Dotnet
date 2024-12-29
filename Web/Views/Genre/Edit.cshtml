@@ -1,0 +1,14 @@
+﻿@model Core.Entities.Genre
+
+<h1>Edit Genre</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
